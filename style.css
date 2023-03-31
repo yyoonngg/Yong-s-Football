@@ -1,0 +1,405 @@
+.nav-bar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #262626;
+    width: 100%;
+}
+.header{
+    margin: 1em;
+    display: flex;
+    color: white;
+}
+.header h2{
+    font-weight: 300;
+    font-size: 2.5em;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.menus{
+    border-top: 1px solid black;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 50px;
+}
+.menus button{
+    border: none;
+    color: white;
+    background-color: #262626;
+    margin:1em;
+    font-weight: 500;
+}
+.menus button:hover{
+    transform: scale(1.1);
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75%;
+}
+.ranking-list{
+    height: 300px;
+    overflow-y: scroll;
+    width: 100%;
+}
+table{
+    border-collapse: collapse;
+    background-color: white;
+    color: #262626;
+    width: 100%;
+}
+table th,td{
+    text-align: center;
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    width: 60px;
+    height: 10px;
+}
+table th {
+    color: white;
+    background-color: #262626;
+}
+.fixed{
+    position: sticky;
+    top: 0;
+}
+table td:nth-child(2){
+    width:200px;
+    text-align: start;
+    padding-left: 10px;
+}
+table th:nth-child(8){
+    width: 80px;
+}
+.logo{
+    width:25px;
+}
+.ranking-head{
+    margin-top: 1.5em;
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-self: start;
+}
+.ranking-sub{
+    font-size: 15px;
+    font-weight: 600;
+}
+.score-assist-rank{
+    width:100%;
+}
+.rank-menu{
+    display: flex;
+    display: flex;
+    align-self: start;
+    margin-top: 10px;
+}
+.rank-menu div{
+    margin-right:1em;
+    cursor: pointer;
+}
+.last-game{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #262626;
+    background-color: #262626;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+.logo-box{
+    display: flex;
+    width:100%;
+    justify-content: space-around;
+}
+.score-box{
+    display: flex;
+    width:100%;
+    justify-content: space-around;
+}
+.score-box div{
+    font-size: 2em;
+    font-weight: 800;
+}
+.team-match{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #262626;
+    width: 150px;
+    height: 10em;
+    background-color: white;
+    border-radius: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.team-match:hover{
+    transform: scale(1.1);
+}
+.match-logo{
+    width: 4em;
+}
+.match-date{
+    background-color: #efefef;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1em;
+}
+.game-statistics{
+    border: 2px solid #262626;
+    border-radius: 5px;
+    padding-top:2em;
+    padding-bottom: 2em;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2em;
+}
+.static-team-box{
+    display: flex;
+    width:100%;
+    justify-content: space-around;
+    align-items: center;
+}
+.static-score-box{
+    display: flex;
+    width:100%;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.static-team-box div:nth-child(3){
+    width: 100px;
+    text-align: center;
+}
+.static-team-box div:nth-child(2){
+    text-align: center;
+    width: 40px;
+}
+.static-team-box div:nth-child(4){
+    width: 40px;
+    text-align: center;
+}
+.static-score-box div:first-child{
+    width: 400px;
+}
+.static-score-box div:nth-child(3){
+    width:400px;
+}
+.home-percentage-box{
+    display: flex;
+    justify-content: end;
+    height: 15px;
+    width: 30%;
+    background-color: #efefef;
+    border-radius: 5px;
+}
+.away-percentage-box{
+    display: flex;
+    justify-content: start;
+    height: 15px;
+    width: 30%;
+    background-color: #efefef;
+    border-radius: 5px;
+}
+.home-possession-value{
+    height: 15px;
+    background-color: #262626;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.away-possession-value{
+    height: 15px;
+    background-color: #262626;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+footer{
+    width: 100%;
+    height: 300px;
+    background-color:#262626;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.footer-first-line{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 20px;
+}
+.footer-first-line a{
+    text-decoration: none;
+    color: white;
+    margin-left: 1em;
+    margin-right: 1em;
+    font-size: 15px;
+    font-weight: 750;
+}
+.footer-first-line a:hover{
+    text-decoration: underline;
+}
+.footer-third-line div{
+    font-weight: 300;
+    font-size: 2.5em;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.footer-second-line{
+    display: flex;
+    justify-content: space-around;
+    width: 25%;
+}
+.footer-second-line button{
+    border-radius: 5px;
+    border: none;
+    margin-right: 2em;
+    margin-left: 2em;
+}
+.footer-second-line button:hover{
+    transform: scale(1.2);
+}
+.footer-forth-line div{
+    font-size: 10px;
+}
+.nav-btn{
+    display: inline;
+    position: absolute;
+    top: 20px;
+    right: 30px; 
+}
+.nav-btn a{
+    text-decoration: none;
+    color: white;
+    margin-left: 1em;
+}
+.nav-btn a:hover{
+    text-decoration: underline;
+}
+.side-menu-btn{
+    display: none;
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: none;
+}
+.side-menu{
+    height: 90px;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 1;
+    right: 0;
+    overflow: hidden;
+    padding-top: 10px;
+    transition: 0.5s;
+    background-color: #262626;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    font-size: 13px;
+}
+.close-btn{
+    border: none;
+    background: none;
+    color: white;
+    font-size: 20px;
+}
+.side-menu-list a{
+    text-decoration: none;
+    color: white;
+}
+.side-menu-list a:hover{
+    text-decoration: underline;
+}
+.page-item{
+    cursor: pointer;
+}
+.active .page-link{
+    border: 1px solid #262626;
+    background-color: #262626;
+    color: white;
+}
+.page-link{
+    border: 1px solid #262626;
+    background-color: white;
+    color: black;
+}
+.page-link:hover{
+    background-color: #262626;
+    border: 1px solid #262626;
+    color: white;
+}
+@media screen and (max-width:63rem){
+    .nav-btn{
+        display: none;
+    }
+    .side-menu-btn{
+        display: block;
+    }
+    .footer-first-line a{
+        font-size: 12px;
+    }
+    .match-logo{
+        width: 55px;
+    }
+    .team-match{
+        width: 130px;
+        height: 150px;
+        margin-bottom: 2em;
+    }
+    .last-game{
+        padding-bottom: 0;
+    }
+    .match-date{
+        font-size: 13px;
+    }
+    .score-box{
+        font-size: 12px;
+    }
+    .row{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .static-team-box{
+        height: 15px;
+        width: 90%;
+        margin-bottom: 5px;
+    }
+    .static-team-box div{
+        font-size: 12px;
+    }
+    .container{
+        width: 100%;
+    }
+    table td{
+        font-size: 12px;
+    }
+    .logo{
+        width:18px;
+    }
+    table th{
+        font-size: 12px;
+    }
+    .menus button{
+        font-size: 10px;
+        margin:1px;
+    }
+}
