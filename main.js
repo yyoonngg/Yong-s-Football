@@ -8,16 +8,11 @@ let awayTeamData;
 let leagueFixture = 4335;
 let leagueId = 39;
 let page = 1;
-let dataLength;
+let dataLength = 6;
 let leagueBtn = document.querySelectorAll(".menus button");
 leagueBtn.forEach((item)=>item.addEventListener("click", (event)=>renderByLeague(event)));
 let pageBtn = document.querySelectorAll(".pagination");
 pageBtn.forEach((item)=>item.addEventListener("click", (event)=>pageClick(event)));
-let bodySize = document.getElementsByName("body")[0];
-window.onresize = (event) =>{
-    let innerWidth = window.innerWidth;
-    innerWidth <= "480px" ? dataLength = 4 : dataLength = 6;
-}
 
 const renderByLeague = (event) => {
     let leagueName = event.target.textContent;
@@ -172,6 +167,10 @@ const lastGame = async() =>{
     gameFixtures = [];
     dataLength = 6;
     let i = 0; //pagination
+    if(document.querySelector("body").offsetWidth <= "480"){
+        dataLength = 4;
+    }
+    console.log(document.querySelector(".last-game").offsetWidth);
     let iLength = dataLength;
     if(page == 2){
         i = dataLength;
@@ -200,7 +199,7 @@ const lastGame = async() =>{
     gameDataHTML += '</div>';
     document.querySelector(".last-game").innerHTML = gameDataHTML;
 
-    gameStatistics(gameData[i-6].fixture_id);
+    gameStatistics(gameData[i-dataLength].fixture_id);
     renderPage();
 }
 const renderPage = () =>{
