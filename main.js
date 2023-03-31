@@ -16,7 +16,7 @@ pageBtn.forEach((item)=>item.addEventListener("click", (event)=>pageClick(event)
 let bodySize = document.getElementsByName("body")[0];
 window.onresize = (event) =>{
     let innerWidth = window.innerWidth;
-    innerWidth <= "1280" ? dataLength = 4 : dataLength = 6;
+    innerWidth <= "480px" ? dataLength = 4 : dataLength = 6;
 }
 
 const renderByLeague = (event) => {
