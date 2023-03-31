@@ -8,10 +8,16 @@ let awayTeamData;
 let leagueFixture = 4335;
 let leagueId = 39;
 let page = 1;
+let dataLength;
 let leagueBtn = document.querySelectorAll(".menus button");
 leagueBtn.forEach((item)=>item.addEventListener("click", (event)=>renderByLeague(event)));
 let pageBtn = document.querySelectorAll(".pagination");
 pageBtn.forEach((item)=>item.addEventListener("click", (event)=>pageClick(event)));
+let bodySize = document.getElementsByName("body")[0];
+window.onresize = (event) =>{
+    let innerWidth = window.innerWidth;
+    innerWidth <= "1280" ? dataLength = 4 : dataLength = 6;
+}
 
 const renderByLeague = (event) => {
     let leagueName = event.target.textContent;
@@ -161,20 +167,19 @@ const lastGame = async() =>{
     let response = await fetch(url, {headers: header});
     let data = await response.json();
     let gameData = data.api.fixtures;
-    console.log("last:",gameData);
     let gameDataHTML = '';
     gameDataHTML = '<div class="row">';
     gameFixtures = [];
+    dataLength = 6;
     let i = 0; //pagination
-    let iLength = 6;
+    let iLength = dataLength;
     if(page == 2){
-        i = 6;
-        iLength = 12;
+        i = dataLength;
+        iLength = dataLength*2;
     }else if(page == 3){
-        i = 12;
-        iLength = 18;
+        i = dataLength*2;
+        iLength = dataLength*3;
     }
-    console.log(i);
     for(i; i<iLength; i++){
         gameDataHTML += `
         <button class="col-lg-2 col-sm-6 team-match" onclick="gameStatistics(${gameData[i].fixture_id})">
@@ -194,7 +199,7 @@ const lastGame = async() =>{
 
     gameDataHTML += '</div>';
     document.querySelector(".last-game").innerHTML = gameDataHTML;
-    console.log("fix: ", gameFixtures);
+
     gameStatistics(gameData[i-6].fixture_id);
     renderPage();
 }

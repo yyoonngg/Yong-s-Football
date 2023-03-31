@@ -29,7 +29,6 @@
     color: white;
     background-color: #262626;
     margin:1em;
-    font-weight: 500;
 }
 .menus button:hover{
     transform: scale(1.1);
@@ -270,6 +269,8 @@ footer{
     border: none;
     margin-right: 2em;
     margin-left: 2em;
+    color: #262626;
+    background-color: white;
 }
 .footer-second-line button:hover{
     transform: scale(1.2);
@@ -404,5 +405,6 @@ footer{
     .menus button{
         font-size: 8px;
         margin:1px;
+        font-weight: 500;
     }
 }
