@@ -110,7 +110,7 @@ table th:nth-child(8){
     justify-content: space-around;
     align-items: center;
     background-color: #262626;
-    margin-bottom: 2em;
+    margin-bottom: 5px;
     margin-top: 1em;
     padding-bottom: 2em;
 }
