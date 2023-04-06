@@ -13,6 +13,24 @@ let leagueBtn = document.querySelectorAll(".menus button");
 leagueBtn.forEach((item)=>item.addEventListener("click", (event)=>renderByLeague(event)));
 let pageBtn = document.querySelectorAll(".pagination");
 pageBtn.forEach((item)=>item.addEventListener("click", (event)=>pageClick(event)));
+let inputValue = document.querySelector(".input-box");
+let searchBtn = document.querySelector(".search-btn");
+searchBtn.addEventListener("click", ()=>searchByTopic());
+
+const searchByTopic = async() =>{
+    console.log(inputValue.value);
+    url = new URL(`https://api-football-v1.p.rapidapi.com/v2/teams/search/${inputValue.value}`);
+
+    let header = new Headers({
+        'X-RapidAPI-Key': 'aa20214fcamsh905caccfec4d5cep11381cjsn54f631234476',
+		'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+    });
+    let response = await fetch(url, {headers: header});
+    let data = await response.json();
+    let searchData = data.api.teams[0].team_id;
+    console.log(searchData);
+    lastGame(searchData);
+}
 
 const renderByLeague = (event) => {
     let leagueName = event.target.textContent;
@@ -153,14 +171,19 @@ const renderAssistRank = async() => {
     document.querySelector(".assist-sub").style.color = 'black';
     document.querySelector(".score-sub").style.color = 'lightgrey';
 }
-const lastGame = async() =>{
+const lastGame = async(searchData) =>{
     let url = new URL(`https://api-football-v1.p.rapidapi.com/v2/fixtures/league/${leagueFixture}/last/18?timezone=Europe%2FLondon`);
+    if(searchData){
+        url = new URL(`https://api-football-v1.p.rapidapi.com/v2/fixtures/team/${searchData}/last/10?timezone=Europe%2FLondon`);
+        console.log(searchData);
+    }
     let header = new Headers({
         'X-RapidAPI-Key': 'aa20214fcamsh905caccfec4d5cep11381cjsn54f631234476',
 		'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
     });
     let response = await fetch(url, {headers: header});
     let data = await response.json();
+    console.log(data);
     let gameData = data.api.fixtures;
     let gameDataHTML = '';
     gameDataHTML = '<div class="row">';
@@ -170,7 +193,6 @@ const lastGame = async() =>{
     if(document.querySelector("body").offsetWidth <= "480"){
         dataLength = 4;
     }
-    console.log(document.querySelector(".last-game").offsetWidth);
     let iLength = dataLength;
     if(page == 2){
         i = dataLength;
@@ -195,7 +217,7 @@ const lastGame = async() =>{
         `
         gameFixtures.push(gameData[i].fixture_id);
     }
-
+    console.log(gameFixtures);
     gameDataHTML += '</div>';
     document.querySelector(".last-game").innerHTML = gameDataHTML;
 
