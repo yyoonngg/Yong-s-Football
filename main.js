@@ -15,6 +15,12 @@ let pageBtn = document.querySelectorAll(".pagination");
 pageBtn.forEach((item)=>item.addEventListener("click", (event)=>pageClick(event)));
 let inputValue = document.querySelector(".input-box");
 let searchBtn = document.querySelector(".search-btn");
+inputValue.addEventListener("keypress", (event)=>{
+    if(event.key == "Enter") {
+        event.preventDefault();
+        document.querySelector(".search-btn").click();
+    }
+});
 searchBtn.addEventListener("click", ()=>searchByTopic());
 
 const searchByTopic = async() =>{
