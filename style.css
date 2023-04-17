@@ -23,7 +23,7 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    height: 50px;
+    height: 60px;
 }
 .menus button{
     border: none;
@@ -428,8 +428,8 @@ footer{
         font-weight: 600;
     }
     .menus button{
-        font-size: 8px;
+        font-size: 15px;
         margin:1px;
-        font-weight: 500;
+        font-weight: 550;
     }
 }

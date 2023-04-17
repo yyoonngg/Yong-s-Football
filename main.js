@@ -22,25 +22,21 @@ inputValue.addEventListener("keypress", (event)=>{
     }
 });
 searchBtn.addEventListener("click", ()=>searchByTopic());
+const BASE_URL="https://api-football-v1.p.rapidapi.com";
+const API_KEY= config.apikey;
 
 const searchByTopic = async() =>{
-    console.log(inputValue.value);
-    url = new URL(`https://api-football-v1.p.rapidapi.com/v2/teams/search/${inputValue.value}`);
+    url = new URL(`${BASE_URL}/v2/teams/search/${inputValue.value}`);
 
-    let header = new Headers({
-        'X-RapidAPI-Key': 'aa20214fcamsh905caccfec4d5cep11381cjsn54f631234476',
-		'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
-    });
+    let header = new Headers(API_KEY);
     let response = await fetch(url, {headers: header});
     let data = await response.json();
     let searchData = data.api.teams[0].team_id;
-    console.log(searchData);
     lastGame(searchData);
 }
 
 const renderByLeague = (event) => {
     let leagueName = event.target.textContent;
-    console.log(leagueName);
     switch (leagueName) {
         case " Premier League":
             leagueFixture = 4335;
@@ -63,18 +59,14 @@ const renderByLeague = (event) => {
             leagueId = 61;
             break;
     }
-    console.log(leagueFixture);
     renderRankTable();
     renderScoreRank();
     lastGame();
 }
 const renderRankTable = async() => {
-    url = new URL(`https://api-football-v1.p.rapidapi.com/v3/standings?season=2022&league=${leagueId}`);
+    url = new URL(`${BASE_URL}/v3/standings?season=2022&league=${leagueId}`);
 
-    let header = new Headers({
-        'X-RapidAPI-Key': 'aa20214fcamsh905caccfec4d5cep11381cjsn54f631234476',
-		'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
-    });
+    let header = new Headers(API_KEY);
     let response = await fetch(url, {headers: header});
     let data = await response.json();
     rankingData = data.response[0].league.standings[0];
@@ -109,11 +101,8 @@ const renderRankTable = async() => {
 }
 
 const renderScoreRank = async() =>{
-    url = new URL(`https://api-football-v1.p.rapidapi.com/v3/players/topscorers?league=${leagueId}&season=2022`);
-    let header = new Headers({
-        'X-RapidAPI-Key': 'aa20214fcamsh905caccfec4d5cep11381cjsn54f631234476',
-		'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
-    });
+    url = new URL(`${BASE_URL}/v3/players/topscorers?league=${leagueId}&season=2022`);
+    let header = new Headers(API_KEY);
     let response = await fetch(url, {headers: header});
     data = await response.json();
     usingData = data.response;
@@ -144,11 +133,8 @@ const renderScoreRank = async() =>{
 }
 
 const renderAssistRank = async() => {
-    url = new URL(`https://api-football-v1.p.rapidapi.com/v3/players/topassists?league=${leagueId}&season=2022`);
-    let header = new Headers({
-        'X-RapidAPI-Key': 'aa20214fcamsh905caccfec4d5cep11381cjsn54f631234476',
-		'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
-    });
+    url = new URL(`${BASE_URL}/v3/players/topassists?league=${leagueId}&season=2022`);
+    let header = new Headers(API_KEY);
     let response = await fetch(url, {headers: header});
     data = await response.json();
     usingData = data.response;
@@ -178,18 +164,13 @@ const renderAssistRank = async() => {
     document.querySelector(".score-sub").style.color = 'lightgrey';
 }
 const lastGame = async(searchData) =>{
-    let url = new URL(`https://api-football-v1.p.rapidapi.com/v2/fixtures/league/${leagueFixture}/last/18?timezone=Europe%2FLondon`);
+    let url = new URL(`${BASE_URL}/v2/fixtures/league/${leagueFixture}/last/18?timezone=Europe%2FLondon`);
     if(searchData){
-        url = new URL(`https://api-football-v1.p.rapidapi.com/v2/fixtures/team/${searchData}/last/10?timezone=Europe%2FLondon`);
-        console.log(searchData);
+        url = new URL(`${BASE_URL}/v2/fixtures/team/${searchData}/last/10?timezone=Europe%2FLondon`);
     }
-    let header = new Headers({
-        'X-RapidAPI-Key': 'aa20214fcamsh905caccfec4d5cep11381cjsn54f631234476',
-		'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
-    });
+    let header = new Headers(API_KEY);
     let response = await fetch(url, {headers: header});
     let data = await response.json();
-    console.log(data);
     let gameData = data.api.fixtures;
     let gameDataHTML = '';
     gameDataHTML = '<div class="row">';
@@ -223,7 +204,6 @@ const lastGame = async(searchData) =>{
         `
         gameFixtures.push(gameData[i].fixture_id);
     }
-    console.log(gameFixtures);
     gameDataHTML += '</div>';
     document.querySelector(".last-game").innerHTML = gameDataHTML;
 
@@ -242,16 +222,12 @@ const renderPage = () =>{
     document.querySelector(".pagination").innerHTML = pageHTML;
 }
 const pageClick=(e)=>{
-    console.log(e.target.textContent);
     page = e.target.textContent;
     lastGame();
 }
 const gameStatistics = async(id) => {
-    let url = new URL(`https://api-football-v1.p.rapidapi.com/v3/fixtures/statistics?fixture=${id}`);
-    let header = new Headers({
-        'X-RapidAPI-Key': 'aa20214fcamsh905caccfec4d5cep11381cjsn54f631234476',
-		'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
-    });
+    let url = new URL(`${BASE_URL}/v3/fixtures/statistics?fixture=${id}`);
+    let header = new Headers(API_KEY);
     let response = await fetch(url, {headers: header});
     let data = await response.json();
     homeTeamData = data.response[0];
@@ -306,8 +282,6 @@ const openSideNav =()=>{
 const closeSideNav =()=>{
     document.querySelector(".side-menu").style.width = "0px";
 }
-//footballAPI();
-//getRenderAPI();
 renderRankTable();
 renderScoreRank();
 lastGame();
