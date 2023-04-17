@@ -23,7 +23,7 @@ inputValue.addEventListener("keypress", (event)=>{
 });
 searchBtn.addEventListener("click", ()=>searchByTopic());
 const BASE_URL="https://api-football-v1.p.rapidapi.com";
-const API_KEY= config.apikey;
+const API_KEY= config.apiKey;
 
 const searchByTopic = async() =>{
     url = new URL(`${BASE_URL}/v2/teams/search/${inputValue.value}`);
