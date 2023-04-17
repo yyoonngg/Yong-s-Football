@@ -9,6 +9,7 @@ let leagueFixture = 4335;
 let leagueId = 39;
 let page = 1;
 let dataLength = 6;
+
 let leagueBtn = document.querySelectorAll(".menus button");
 leagueBtn.forEach((item)=>item.addEventListener("click", (event)=>renderByLeague(event)));
 let pageBtn = document.querySelectorAll(".pagination");
