@@ -191,7 +191,7 @@ const lastGame = async(searchData) =>{
     }
     for(i; i<iLength; i++){
         gameDataHTML += `
-        <button class="col-lg-2 col-sm-6 team-match" onclick="gameStatistics(${gameData[i].fixture_id})">
+        <button class="col-lg-2 col-md-6 col-sm-6 team-match" onclick="gameStatistics(${gameData[i].fixture_id})">
             <div class="match-date">${gameData[i].event_date.substr(5,11).replace("T"," ")}</div>
             <div class="logo-box">
                 <img class="match-logo" src="${gameData[i].homeTeam.logo}">
@@ -212,7 +212,7 @@ const lastGame = async(searchData) =>{
     renderPage();
 }
 const renderPage = () =>{
-    pageHTML = '';
+    let pageHTML = '';
     for(let j=0;j<3;j++){
         pageHTML += `
             <li class="page-item ${(j+1)==page?"active":""}">  
